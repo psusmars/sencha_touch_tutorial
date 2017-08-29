@@ -1,6 +1,7 @@
 Ext.define('MyApp.view.main.Main',{
     extend: 'Ext.tab.Panel',
     controller: 'main',
+    cls: 'main',
     requires: [
         'Ext.Button',
         'Ext.field.Text'
@@ -14,7 +15,8 @@ Ext.define('MyApp.view.main.Main',{
 
     items: [{
         title: 'Home',
-        html: '<h1 class="main-banner">Hello World!</h1>',
+        cls: 'home',
+        html: '<h1 class="banner">Hello World!</h1>',
         items: [{
             xtype: 'textfield',
             label: 'User name',
