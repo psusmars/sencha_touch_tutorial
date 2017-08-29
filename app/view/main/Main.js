@@ -18,7 +18,10 @@ Ext.define('MyApp.view.main.Main',{
         items: [{
             xtype: 'textfield',
             label: 'User name',
-            bind: '{userName}'
+            bind: '{userName}',
+            listeners: {
+                action: 'onGo'
+            }
         },
         {
             xtype: 'button',
