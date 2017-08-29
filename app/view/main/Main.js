@@ -33,7 +33,8 @@ Ext.define('MyApp.view.main.Main',{
             }
         }]
     }, {
-        title: 'Notifications'
+        title: 'Notifications',
+        xtype: 'notifications'
     }, {
         title: 'Settings'
     }]
