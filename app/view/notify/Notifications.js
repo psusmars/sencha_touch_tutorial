@@ -13,9 +13,9 @@ Ext.define('MyApp.view.notify.Notifications', {
     items: [{
         xtype: 'grid',
 
-        // store: {
-        //     type: 'notifications' 
-        // },
+        store: {
+            type: 'notifications' 
+        },
 
         columns: [{
             xtype: 'datecolumn',
