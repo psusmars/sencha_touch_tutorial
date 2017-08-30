@@ -1,43 +1,96 @@
-Ext.define('MyApp.view.main.Main',{
+Ext.define('MyApp.view.main.Main', {
     extend: 'Ext.tab.Panel',
-    controller: 'main',
-    cls: 'main',
+    xtype: 'app-main',
+
     requires: [
-        'Ext.Button',
-        'Ext.field.Text'
+        'Ext.MessageBox',
+
+        'MyApp.view.main.MainController'
     ],
 
-    viewModel: {
-        data: {
-            userName: ''
+    controller: 'main',
+    viewModel: 'main',
+
+    ui: 'navigation',
+
+    tabBarHeaderPosition: 1,
+    titleRotation: 0,
+    tabRotation: 0,
+
+    header: {
+        layout: {
+            align: 'stretchmax'
+        },
+        title: {
+            bind: {
+                text: '{name}'
+            },
+            flex: 0
+        },
+        iconCls: 'fa-th-list',
+        items: [{
+            xtype: 'button',
+            text: 'Logout',
+            margin: '10 0',
+            handler: 'onClickButton'
+        }]
+    },
+
+    tabBar: {
+        flex: 1,
+        layout: {
+            align: 'stretch',
+            overflowHandler: 'none'
+        }
+    },
+
+    responsiveConfig: {
+        tall: {
+            headerPosition: 'top'
+        },
+        wide: {
+            headerPosition: 'left'
+        }
+    },
+
+    defaults: {
+        bodyPadding: 20,
+        tabConfig: {
+            plugins: 'responsive',
+            responsiveConfig: {
+                wide: {
+                    iconAlign: 'left',
+                    textAlign: 'left'
+                },
+                tall: {
+                    iconAlign: 'top',
+                    textAlign: 'center',
+                    width: 120
+                }
+            }
         }
     },
 
     items: [{
         title: 'Home',
-        cls: 'home',
-        html: '<h1 class="banner">Hello World!</h1>',
-        items: [{
-            xtype: 'textfield',
-            label: 'User name',
-            bind: '{userName}',
-            listeners: {
-                action: 'onGo'
-            }
-        },
-        {
-            xtype: 'button',
-            text: 'Go',
-            handler: 'onGo',
-            bind: {
-                disabled: '{!userName}',
-                text: '{userName ? "Save: " + userName : "Save"}'
-            }
-        }]
+        iconCls: 'fa-home'
     }, {
-        title: 'Notifications',
-        xtype: 'notifications'
+        title: 'Users',
+        iconCls: 'fa-user',
+        bind: {
+            html: '{loremIpsum}'
+        }
     }, {
-        title: 'Settings'
+        title: 'Groups',
+        iconCls: 'fa-users',
+        bind: {
+            html: '{loremIpsum}'
+        }
+    }, {
+        title: 'Settings',
+        iconCls: 'fa-cog',
+        bind: {
+            html: '{loremIpsum}'
+        }
     }]
 });

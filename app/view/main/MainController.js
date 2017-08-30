@@ -1,12 +1,28 @@
 Ext.define('MyApp.view.main.MainController', {
     extend: 'Ext.app.ViewController',
+
     alias: 'controller.main',
 
-    requires: [
-        'Ext.MessageBox'
-    ],
+    onItemSelected: function (sender, record) {
+        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
+    },
 
-    onGo: function () {
-        Ext.Msg.alert('Go', 'From main view controller');
+    onConfirm: function (choice) {
+        if (choice === 'yes') {
+            //
+        }
+    },
+
+    onClickButton: function () {
+        // Remove the localStorage key/value
+        localStorage.removeItem('TutorialLoggedIn');
+
+        // Remove Main View
+        this.getView().destroy();
+
+        // Add the Login Window
+        Ext.create({
+            xtype: 'login'
+        });
     }
 });
